@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class AreaControleService {
@@ -20,5 +22,9 @@ public class AreaControleService {
     public AreaControleResponse saveAreaControle(AreaControleRequest areaControleRequest){
         AreaControleEntity areaControleEntity = mapperAreaControle.toAreaControleEntity(areaControleRequest);
         return mapperAreaControle.toAreaControleResponse(areaControleRepository.save(areaControleEntity));
+    }
+
+    public List<AreaControleResponse> getAllAreasControle(){
+        return mapperAreaControle.toAreasControleResponse(areaControleRepository.findAll());
     }
 }
