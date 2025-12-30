@@ -1,8 +1,8 @@
 package com.example.controle_semanal.service;
 
-import com.example.controle_semanal.dto.AreaControleRequest;
-import com.example.controle_semanal.dto.AreaControleResponse;
-import com.example.controle_semanal.entity.AreaControleEntity;
+import com.example.controle_semanal.dto.request.AreaControleRequest;
+import com.example.controle_semanal.dto.response.AreaControleResponse;
+import com.example.controle_semanal.entity.AreaControle;
 import com.example.controle_semanal.mapper.MapperAreaControle;
 import com.example.controle_semanal.repository.AreaControleRepository;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ class AreaControleServiceTest {
     @Test
     void saveAreaControle() {
         // Arrange
-        var areaControleEntity = new AreaControleEntity(3L , "Espiritualidade" , null);
+        var areaControleEntity = new AreaControle(3L , "Espiritualidade" , null);
         var areaControleRequest = new AreaControleRequest("Espiritualidade");
         var areaControleResponse = new AreaControleResponse(3L , "Espiritualidade");
         Mockito.when(mapperAreaControle.toAreaControleEntity(areaControleRequest)).thenReturn(areaControleEntity);

@@ -1,4 +1,4 @@
-package com.example.controle_semanal.dto;
+package com.example.controle_semanal.dto.response;
 
 public record SugestaoResponse (
         Long id,

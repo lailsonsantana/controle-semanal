@@ -1,8 +1,8 @@
 package com.example.controle_semanal.service;
 
-import com.example.controle_semanal.dto.SugestaoRequest;
-import com.example.controle_semanal.dto.SugestaoResponse;
-import com.example.controle_semanal.entity.SugestaoEntity;
+import com.example.controle_semanal.dto.request.SugestaoRequest;
+import com.example.controle_semanal.dto.response.SugestaoResponse;
+import com.example.controle_semanal.entity.Sugestao;
 import com.example.controle_semanal.mapper.MapperSugestao;
 import com.example.controle_semanal.repository.SugestaoRepository;
 import org.junit.jupiter.api.Test;
@@ -29,12 +29,12 @@ class SugestaoServiceTest {
     @Test
     void saveSugestao() {
         // Arrange
-        var sugestaoEntity = new SugestaoEntity(2L , "Comprar bananas", null);
-        var sugestaoRequest = new SugestaoRequest("Comprar bananas");
+        var sugestaoEntity = new Sugestao(2L , "Comprar bananas", null);
+        var sugestaoRequest = new SugestaoRequest("Comprar bananas", 2L);
         var sugestaoResponse = new SugestaoResponse(2L, "Comprar bananas", null);
         // Act
         Mockito.when(sugestaoRepository.save(sugestaoEntity)).thenReturn(sugestaoEntity);
-        Mockito.when(mapperSugestao.toSugestaoEntity(sugestaoRequest)).thenReturn(sugestaoEntity);
+        Mockito.when(mapperSugestao.toSugestao(sugestaoRequest)).thenReturn(sugestaoEntity);
         Mockito.when(mapperSugestao.toSugestaoResponse(sugestaoEntity)).thenReturn(sugestaoResponse);
 
         var output = sugestaoService.saveSugestao(sugestaoRequest);

@@ -1,8 +1,8 @@
 package com.example.controle_semanal.service;
 
-import com.example.controle_semanal.dto.AreaControleRequest;
-import com.example.controle_semanal.dto.AreaControleResponse;
-import com.example.controle_semanal.entity.AreaControleEntity;
+import com.example.controle_semanal.dto.request.AreaControleRequest;
+import com.example.controle_semanal.dto.response.AreaControleResponse;
+import com.example.controle_semanal.entity.AreaControle;
 import com.example.controle_semanal.mapper.MapperAreaControle;
 import com.example.controle_semanal.repository.AreaControleRepository;
 import jakarta.transaction.Transactional;
@@ -20,8 +20,8 @@ public class AreaControleService {
 
     @Transactional
     public AreaControleResponse saveAreaControle(AreaControleRequest areaControleRequest){
-        AreaControleEntity areaControleEntity = mapperAreaControle.toAreaControleEntity(areaControleRequest);
-        return mapperAreaControle.toAreaControleResponse(areaControleRepository.save(areaControleEntity));
+        AreaControle areaControle = mapperAreaControle.toAreaControleEntity(areaControleRequest);
+        return mapperAreaControle.toAreaControleResponse(areaControleRepository.save(areaControle));
     }
 
     public List<AreaControleResponse> getAllAreasControle(){

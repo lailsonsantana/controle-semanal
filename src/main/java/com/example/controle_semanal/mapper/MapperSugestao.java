@@ -1,21 +1,25 @@
 package com.example.controle_semanal.mapper;
 
-import com.example.controle_semanal.dto.SugestaoRequest;
-import com.example.controle_semanal.dto.SugestaoResponse;
-import com.example.controle_semanal.entity.SugestaoEntity;
+import com.example.controle_semanal.dto.request.SugestaoRequest;
+import com.example.controle_semanal.dto.response.SugestaoResponse;
+import com.example.controle_semanal.entity.Sugestao;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface MapperSugestao {
 
-    SugestaoEntity toSugestaoEntity(SugestaoRequest sugestaoRequest);
+    @Mapping(source = "areaControleId", target = "areaControle.id")
+    Sugestao toSugestao(SugestaoRequest sugestaoRequest);
 
-    SugestaoResponse toSugestaoResponse(SugestaoEntity sugestaoEntity);
+    @Mapping(source = "areaControle.id", target = "areaControleId")
+    SugestaoResponse toSugestaoResponse(Sugestao sugestao);
 
-    List<SugestaoEntity> toSugestoesEntity(List<SugestaoRequest> sugestoesRequest);
+    List<Sugestao> toSugestoesEntity(List<SugestaoRequest> sugestoesRequest);
 
-    List<SugestaoResponse> toSugestoesResponse(List<SugestaoEntity> sugestoesEntity);
+    List<SugestaoResponse> toSugestoesResponse(List<Sugestao> sugestoesEntity);
 }

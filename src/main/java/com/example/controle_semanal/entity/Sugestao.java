@@ -1,5 +1,7 @@
 package com.example.controle_semanal.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class SugestaoEntity {
+public class Sugestao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +21,6 @@ public class SugestaoEntity {
     private String sugestaoMelhoria;
 
     @ManyToOne
-    private AreaControleEntity areaControleEntity;
+    @JsonBackReference
+    private AreaControle areaControle;
 }

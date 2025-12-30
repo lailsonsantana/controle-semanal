@@ -1,7 +1,7 @@
 package com.example.controle_semanal.controller;
 
-import com.example.controle_semanal.dto.AreaControleRequest;
-import com.example.controle_semanal.dto.AreaControleResponse;
+import com.example.controle_semanal.dto.request.AreaControleRequest;
+import com.example.controle_semanal.dto.response.AreaControleResponse;
 import com.example.controle_semanal.service.AreaControleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
