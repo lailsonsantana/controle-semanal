@@ -3,7 +3,7 @@ package com.example.controle_semanal.service;
 import com.example.controle_semanal.dto.AreaControleRequest;
 import com.example.controle_semanal.dto.AreaControleResponse;
 import com.example.controle_semanal.entity.AreaControleEntity;
-import com.example.controle_semanal.mapper.AreaControleMapper;
+import com.example.controle_semanal.mapper.MapperAreaControle;
 import com.example.controle_semanal.repository.AreaControleRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,8 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,7 +21,7 @@ class AreaControleServiceTest {
     private AreaControleService areaControleService;
 
     @Mock
-    private AreaControleMapper areaControleMapper;
+    private MapperAreaControle mapperAreaControle;
 
     @Mock
     private AreaControleRepository areaControleRepository;
@@ -34,8 +32,8 @@ class AreaControleServiceTest {
         var areaControleEntity = new AreaControleEntity(3L , "Espiritualidade" , null);
         var areaControleRequest = new AreaControleRequest("Espiritualidade");
         var areaControleResponse = new AreaControleResponse(3L , "Espiritualidade");
-        Mockito.when(areaControleMapper.toAreaControleEntity(areaControleRequest)).thenReturn(areaControleEntity);
-        Mockito.when(areaControleMapper.toAreaControleResponse(areaControleEntity)).thenReturn(areaControleResponse);
+        Mockito.when(mapperAreaControle.toAreaControleEntity(areaControleRequest)).thenReturn(areaControleEntity);
+        Mockito.when(mapperAreaControle.toAreaControleResponse(areaControleEntity)).thenReturn(areaControleResponse);
         Mockito.when(areaControleRepository.save(areaControleEntity)).thenReturn(areaControleEntity);
 
         // Act

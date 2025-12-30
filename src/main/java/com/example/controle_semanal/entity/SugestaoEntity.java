@@ -1,10 +1,9 @@
 package com.example.controle_semanal.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "TB_SUGESTAO")
 public class SugestaoEntity {
 
     @Id
