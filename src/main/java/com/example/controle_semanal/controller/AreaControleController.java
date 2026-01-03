@@ -1,7 +1,9 @@
 package com.example.controle_semanal.controller;
 
 import com.example.controle_semanal.dto.request.AreaControleRequest;
+import com.example.controle_semanal.dto.request.StatusRequest;
 import com.example.controle_semanal.dto.response.AreaControleResponse;
+import com.example.controle_semanal.dto.response.StatusResponse;
 import com.example.controle_semanal.service.AreaControleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,5 +27,10 @@ public class AreaControleController {
     @GetMapping
     public ResponseEntity<List<AreaControleResponse>> getAll(){
         return ResponseEntity.status(HttpStatus.OK).body(areaControleService.getAllAreasControle());
+    }
+
+    @PutMapping("mudar-status")
+    public ResponseEntity<StatusResponse> updateStatus(@RequestBody StatusRequest statusRequest){
+        return ResponseEntity.status(HttpStatus.OK).body(areaControleService.changeStatus(statusRequest));
     }
 }

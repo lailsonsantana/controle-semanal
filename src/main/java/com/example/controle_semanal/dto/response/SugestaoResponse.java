@@ -2,7 +2,7 @@ package com.example.controle_semanal.dto.response;
 
 public record SugestaoResponse (
         Long id,
-        String sugestaoMelhoria,
+        String descricao,
         Long areaControleId
 ){
 }

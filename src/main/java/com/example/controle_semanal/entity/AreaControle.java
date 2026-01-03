@@ -1,5 +1,6 @@
 package com.example.controle_semanal.entity;
 
+import com.example.controle_semanal.entity.enums.Status;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -9,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,7 +27,10 @@ public class AreaControle {
 
     private String nome;
 
-    @OneToMany(mappedBy = "areaControle")
+    @OneToMany(mappedBy = "areaControle", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private Set<Sugestao> sugestoes = new HashSet<>();
+    private List<Sugestao> sugestoes;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

@@ -18,7 +18,7 @@ public class Sugestao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sugestaoMelhoria;
+    private String descricao;
 
     @ManyToOne
     @JsonBackReference
