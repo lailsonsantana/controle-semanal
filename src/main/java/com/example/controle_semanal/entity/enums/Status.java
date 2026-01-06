@@ -5,6 +5,7 @@ public enum Status {
     PESSIMO,
     RUIM,
     RAZOAVEL,
-    BOA,
+    BOM,
     OTIMO
+
 }

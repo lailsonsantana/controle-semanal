@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,10 +28,19 @@ public class AreaControle {
 
     private String nome;
 
-    @OneToMany(mappedBy = "areaControle", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "areaControle", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Sugestao> sugestoes;
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    private Integer pontuacao;
+
+    private LocalDateTime dataCriacao;
+
+    @PrePersist
+    protected void onCreate() {
+        this.dataCriacao = LocalDateTime.now();
+    }
 }

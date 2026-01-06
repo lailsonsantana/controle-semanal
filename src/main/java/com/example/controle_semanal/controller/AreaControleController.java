@@ -29,6 +29,16 @@ public class AreaControleController {
         return ResponseEntity.status(HttpStatus.OK).body(areaControleService.getAllAreasControle());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<AreaControleResponse> getById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(areaControleService.getAreaControleById(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<AreaControleResponse> updateById(@RequestBody AreaControleRequest areaControleRequest){
+        return ResponseEntity.status(HttpStatus.OK).body(areaControleService.updateAreaControleById(areaControleRequest));
+    }
+
     @PutMapping("mudar-status")
     public ResponseEntity<StatusResponse> updateStatus(@RequestBody StatusRequest statusRequest){
         return ResponseEntity.status(HttpStatus.OK).body(areaControleService.changeStatus(statusRequest));

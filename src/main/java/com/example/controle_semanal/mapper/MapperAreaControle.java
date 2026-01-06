@@ -18,6 +18,7 @@ public interface MapperAreaControle {
     @Mapping(source = "sugestoes", target = "sugestoes")
     AreaControle toAreaControle(AreaControleRequest areaControleRequest);
 
+    @Mapping(source = "dataCriacao", target = "dataCriacao", dateFormat = "dd/MM/yyyy")
     AreaControleResponse toAreaControleResponse(AreaControle areaControle);
 
     List<AreaControleResponse> toAreasControleResponse(List<AreaControle> areasControleEntity);

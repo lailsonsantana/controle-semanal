@@ -34,6 +34,10 @@ public class SugestaoService {
         throw new AreaControleNotFoundException("Área de controle não foi encontrada");
     }
 
+    public void test(int... primos){
+        System.out.println(primos[0]);
+    }
+
     public List<SugestaoResponse> getAllSugestoes() {
         return mapperSugestao.toSugestoesResponse(sugestaoRepository.findAll());
     }
