@@ -8,6 +8,7 @@ import com.example.controle_semanal.entity.AreaControle;
 import com.example.controle_semanal.entity.enums.Status;
 import com.example.controle_semanal.exception.AreaControleNotFoundException;
 import com.example.controle_semanal.mapper.MapperAreaControle;
+import com.example.controle_semanal.mapper.MapperPergunta;
 import com.example.controle_semanal.mapper.MapperSugestao;
 import com.example.controle_semanal.repository.AreaControleRepository;
 import com.example.controle_semanal.repository.SugestaoRepository;
@@ -25,14 +26,15 @@ import java.util.Optional;
 public class AreaControleService {
 
     private final AreaControleRepository areaControleRepository;
-    private final SugestaoRepository sugestaoRepository;
     private final MapperAreaControle mapperAreaControle;
     private final MapperSugestao mapperSugestao;
+    private final MapperPergunta mapperPergunta;
 
     @Transactional
     public AreaControleResponse saveAreaControle(AreaControleRequest areaControleRequest){
         System.out.println(areaControleRequest);
         AreaControle areaControle = mapperAreaControle.toAreaControle(areaControleRequest);
+        areaControle.getPerguntas().forEach(pergunta -> pergunta.setAreaControle(areaControle));
         areaControle.getSugestoes().forEach(sugestao -> sugestao.setAreaControle(areaControle));
         return mapperAreaControle.toAreaControleResponse(areaControleRepository.save(areaControle));
     }
@@ -51,13 +53,16 @@ public class AreaControleService {
     }
 
     public AreaControleResponse updateAreaControleById(AreaControleRequest areaControleRequest){
-        System.out.println("ACIONAMOS A EDIÇÃO");
+        System.out.println(areaControleRequest);
         Optional<AreaControle> areaControleOp = areaControleRepository.findById(areaControleRequest.id());
         AreaControle area;
         if(areaControleOp.isPresent()){
             area = areaControleOp.get();
             area.setNome(areaControleRequest.nome());
+            area.setPontuacao(areaControleRequest.pontuacao());
+            area.setPerguntas(mapperPergunta.toPerguntas(areaControleRequest.perguntas()));
             area.setSugestoes(mapperSugestao.toSugestoes(areaControleRequest.sugestoes()));
+
             if(areaControleRequest.status() != null){
                 area.setStatus(Status.valueOf(areaControleRequest.status()));
             }

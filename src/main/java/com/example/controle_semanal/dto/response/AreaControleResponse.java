@@ -1,5 +1,6 @@
 package com.example.controle_semanal.dto.response;
 
+import com.example.controle_semanal.entity.Pergunta;
 import com.example.controle_semanal.entity.Sugestao;
 
 
@@ -9,6 +10,7 @@ public record AreaControleResponse(
         Long id,
         String nome,
         List<Sugestao> sugestoes,
+        List<Pergunta> perguntas,
         String status,
         String dataCriacao,
         int pontuacao

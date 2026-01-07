@@ -3,21 +3,23 @@ package com.example.controle_semanal.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "TB_SUGESTAO")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "TB_PERGUNTA")
 @Data
-public class Sugestao {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Pergunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String descricao;
+    private String textoPergunta;
 
     @ManyToOne
     @JsonBackReference

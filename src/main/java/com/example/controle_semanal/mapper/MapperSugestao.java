@@ -6,7 +6,6 @@ import com.example.controle_semanal.entity.Sugestao;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
-import org.mapstruct.Mappings;
 
 import java.util.List;
 

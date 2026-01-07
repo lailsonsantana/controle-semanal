@@ -7,6 +7,7 @@ public record AreaControleRequest(
         String nome,
         String status,
         List<SugestaoRequest> sugestoes,
+        List<PerguntaRequest> perguntas,
         int pontuacao
 
 ) {
