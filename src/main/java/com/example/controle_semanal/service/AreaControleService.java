@@ -59,17 +59,25 @@ public class AreaControleService {
         if(areaControleOp.isPresent()){
             area = areaControleOp.get();
             area.setNome(areaControleRequest.nome());
-            area.setPontuacao(areaControleRequest.pontuacao());
+            area.setPontuacao(areaControleRequest.pontuacao() + definePontuacao(areaControleRequest.status()));
             area.setPerguntas(mapperPergunta.toPerguntas(areaControleRequest.perguntas()));
             area.setSugestoes(mapperSugestao.toSugestoes(areaControleRequest.sugestoes()));
 
-            if(areaControleRequest.status() != null){
-                area.setStatus(Status.valueOf(areaControleRequest.status()));
-            }
+            area.setStatus(Status.valueOf(areaControleRequest.status()));
             areaControleRepository.save(area);
             return mapperAreaControle.toAreaControleResponse(area);
         }
         throw new AreaControleNotFoundException("Área controle não encontrada");
+    }
+
+    public int definePontuacao(String status){
+        return switch (status) {
+            case "OTIMO" -> 10;
+            case "BOM" -> 8;
+            case "RAZOAVEL" -> 5;
+            case "RUIM" -> 3;
+            default -> 0;
+        };
     }
 
     @Transactional
