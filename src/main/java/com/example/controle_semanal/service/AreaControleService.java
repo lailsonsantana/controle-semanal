@@ -47,7 +47,7 @@ public class AreaControleService {
     public AreaControleResponse getAreaControleById(Long id){
 
         AreaControle area = areaControleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Área não encontrada"));
+                .orElseThrow(() -> new AreaControleNotFoundException("Área Controle não encontrada"));
 
         return mapperAreaControle.toAreaControleResponse(area);
     }
