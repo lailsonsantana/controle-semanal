@@ -1,12 +1,19 @@
 package com.example.controle_semanal.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "TB_REGRA")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Regra {
 
     @Id
