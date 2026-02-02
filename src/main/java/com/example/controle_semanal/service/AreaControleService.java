@@ -40,7 +40,7 @@ public class AreaControleService {
     }
 
     public List<AreaControleResponse> getAllAreasControle(){
-        List<AreaControle> areas = areaControleRepository.findAllByOrderByIdAsc();
+        List<AreaControle> areas = areaControleRepository.findAllByOrderByPontuacaoDesc();
         return mapperAreaControle.toAreasControleResponse(areas);
     }
 

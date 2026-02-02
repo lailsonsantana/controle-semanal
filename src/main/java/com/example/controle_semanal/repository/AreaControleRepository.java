@@ -10,4 +10,5 @@ import java.util.List;
 public interface AreaControleRepository extends JpaRepository<AreaControle,Long> {
 
     List<AreaControle> findAllByOrderByIdAsc();
+    List<AreaControle> findAllByOrderByPontuacaoDesc();
 }
